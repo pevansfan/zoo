@@ -26,7 +26,6 @@ $routes = [
     '/enclos' => 'App/controllers/enclosures/indexCtrl.php',
     '/infoUser' => 'App/controllers/employees/infoCtrl.php',
     '/animalActions' => 'App/controllers/animals/actionsCtrl.php',
-    '/infoTickets' => 'App/controllers/tickets/indexCtrl.php',
     '/addEnclosure' => 'App/controllers/enclosures/createCtrl.php',
     '/addAnimal' => 'App/controllers/animals/createCtrl.php',
     '/enclos/delete' => 'App/controllers/enclosures/deleteCtrl.php',

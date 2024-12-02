@@ -7,39 +7,38 @@ $enclosure = new Enclosure();
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
     try {
-        // Récupérer et sécuriser les données du formulaire
+        // Retrieve and sanitize the form data
         $name = htmlspecialchars($_POST['name']);
         $description = htmlspecialchars($_POST['description']);
 
-        // Vérification si l'utilisateur est connecté
+        // Check if the user is logged in
         if (!isset($_SESSION['role']) || !$_SESSION['role']) {
-            throw new Exception("Utilisateur non connecté.");
+            throw new Exception("User not logged in.");
         }
 
-        // Passer les données à l'enclos
+        // Pass the data to the enclosure
         $enclosure->setName($name);
         $enclosure->setDescription($description);
 
-        // Appeler la méthode pour créer un enclos dans la base de données
+        // Call the method to create an enclosure in the database
         if ($enclosure->createEnclosure()) {
-            // Message de succès
-            $message = "Enclos créé avec succès!";
+            // Success message
+            $message = "Enclosure created successfully!";
         } else {
-            throw new Exception("Échec de la création de l'enclos.");
+            throw new Exception("Failed to create the enclosure.");
         }
 
     } catch (Exception $e) {
-        // Message d'erreur
-        $message = "Erreur : " . $e->getMessage();
+        // Error message
+        $message = "Error: " . $e->getMessage();
     }
 }
 
-// Récupérer tous les enclos pour la vue (si nécessaire)
+// Retrieve all enclosures for the view (if necessary)
 $allEnclosures = $enclosure->getAllEnclosures();
 
-// Afficher la vue en passant les données nécessaires
+// Render the view, passing the necessary data
 render('enclosures/create', [
     'enclos' => $allEnclosures,
     'message' => isset($message) ? $message : null
 ]);
-

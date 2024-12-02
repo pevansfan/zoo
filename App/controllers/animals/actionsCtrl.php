@@ -49,14 +49,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['action'])) {
     if ($action === 'update') {
         // Call the update method from the model
         $result = $animalModel->updateAnimal();
-        if ($result) {
-            // Redirect on success
-            header("Location: /");
-            exit;
-        } else {
-            // Message in case of failure
-            echo "Update failed.";
-        }
+        header("Location: /");
         exit;
     } elseif ($action === 'delete') {
         // Call the delete method from the model
@@ -74,7 +67,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['action'])) {
         // Stop execution if the action is unrecognized
         die('Unrecognized action.');
     }
-
 } else {
     // Stop execution if the request is invalid
     die('Invalid request.');

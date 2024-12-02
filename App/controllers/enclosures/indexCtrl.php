@@ -3,29 +3,29 @@
 use App\models\Enclosure;
 use App\models\Animal;
 
-// Instanciation des modèles Enclosure et Animal
+// Instantiate the Enclosure and Animal models
 $enclos = new Enclosure();
 $animal = new Animal();
 
-// Vérifie si un ID d'enclos est passé dans les paramètres GET
+// Check if an enclosure ID is passed in the GET parameters
 if (isset($_GET['id'])) {
-    $enclos_id = $_GET['id']; // Récupère l'ID de l'enclos
+    $enclos_id = $_GET['id']; // Retrieve the enclosure ID
 
-    // Récupérer les détails de l'enclos par son ID
-    $enclos->setId($enclos_id); // Définit l'ID de l'enclos dans le modèle
-    $enclosById = $enclos->getAllEnclosuresById(); // Obtient les données de l'enclos spécifique
+    // Get the details of the enclosure by its ID
+    $enclos->setId($enclos_id); // Set the enclosure ID in the model
+    $enclosById = $enclos->getAllEnclosuresById(); // Get the details of the specific enclosure
 
-    // Récupérer les animaux associés à cet enclos
-    $animal->setId($enclos_id); // Définit l'ID de l'enclos pour les animaux
-    $animalsByEnclosure = $animal->getAnimalsByEnclosure(); // Récupère la liste des animaux
+    // Get the animals associated with this enclosure
+    $animal->setId($enclos_id); // Set the enclosure ID for the animals
+    $animalsByEnclosure = $animal->getAnimalsByEnclosure(); // Retrieve the list of animals
 
-    // Appel à la fonction render pour passer les données à la vue
+    // Call the render function to pass the data to the view
     render('enclosures/index', [
-        'enclos' => $enclos->getAllEnclosures(), // Liste de tous les enclos
-        'enclosById' => $enclosById, // Détails de l'enclos sélectionné
-        'animals' => $animalsByEnclosure, // Animaux associés à cet enclos
+        'enclos' => $enclos->getAllEnclosures(), // List of all enclosures
+        'enclosById' => $enclosById, // Details of the selected enclosure
+        'animals' => $animalsByEnclosure, // Animals associated with this enclosure
     ]);
 } else {
-    // Message d'erreur si aucun enclos n'est spécifié dans l'URL
-    echo "Aucun enclos spécifié";
+    // Error message if no enclosure is specified in the URL
+    echo "No enclosure specified.";
 }

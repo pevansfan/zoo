@@ -9,7 +9,7 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
     $employee = new Employee();
     $visitor = new Visitor();
 
-    // Vérification de l'email
+    // Email validation
     if (!empty($_POST['email'])) {
         try {
             $email = $_POST['email'];
@@ -19,47 +19,47 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
             $errors['email'] = $e->getMessage();
         }
     } else {
-        $errors['requiredEmail'] = 'Veuillez entrer un email';
+        $errors['requiredEmail'] = 'Please enter an email address.';
     }
 
-    // Vérification du mot de passe
+    // Password validation
     if (empty($_POST['password'])) {
-        $errors['requiredPassword'] = 'Veuillez entrer un mot de passe';
+        $errors['requiredPassword'] = 'Please enter a password.';
     }
 
-    // Si aucun champ d'erreur, vérifier les données dans la base
+    // If there are no errors, check the data in the database
     if (empty($errors)) {
-        // Récupérer les données de l'employé et du visiteur
+        // Retrieve employee and visitor data by email
         $employeeData = $employee->getByEmail();
         $visitorData = $visitor->getByEmail();
 
-        // Vérifier si l'email correspond à un employé
+        // Check if the email corresponds to an employee
         if ($employeeData && $_POST['password'] == $employeeData->password) {
-            // Si l'employé est trouvé et que le mot de passe est correct
+            // If the employee is found and the password is correct
             $_SESSION['employee_email'] = $employeeData->email;
             $_SESSION['employee_firstname'] = $employeeData->firstname;
-            $_SESSION['employee_id'] = $employeeData->id; // Assurez-vous que vous avez un id employé
-            $_SESSION['role'] = 'employee'; // Ajouter un rôle pour identifier l'utilisateur
-            header('Location: /'); // Rediriger vers la page d'accueil ou autre page protégée
+            $_SESSION['employee_id'] = $employeeData->id; // Ensure you have an employee ID
+            $_SESSION['role'] = 'employee'; // Add a role to identify the user
+            header('Location: /'); // Redirect to the home page or another protected page
             exit;
         }
-        // Vérifier si l'email correspond à un visiteur
+        // Check if the email corresponds to a visitor
         elseif ($visitorData && $_POST['password'] == $visitorData->password) {
-            // Si le visiteur est trouvé et que le mot de passe est correct
+            // If the visitor is found and the password is correct
             $_SESSION['visitor_email'] = $visitorData->email;
             $_SESSION['visitor_firstname'] = $visitorData->firstname;
-            $_SESSION['visitor_id'] = $visitorData->id; // Assurez-vous que vous avez un id visiteur
-            $_SESSION['role'] = 'visitor'; // Ajouter un rôle pour identifier l'utilisateur
-            header('Location: /'); // Rediriger vers la page d'accueil ou autre page protégée
+            $_SESSION['visitor_id'] = $visitorData->id; // Ensure you have a visitor ID
+            $_SESSION['role'] = 'visitor'; // Add a role to identify the user
+            header('Location: /'); // Redirect to the home page or another protected page
             exit;
         } else {
-            // Si aucun utilisateur trouvé ou mot de passe incorrect
-            $errors['global'] = "Email ou mot de passe incorrect";
+            // If no user is found or the password is incorrect
+            $errors['global'] = "Incorrect email or password.";
         }
     }
     var_dump($errors);
 } else {
-    $errors['global'] = "Veuillez remplir le formulaire pour vous connecter";
+    $errors['global'] = "Please fill out the form to log in.";
     var_dump($errors);
 }
 

@@ -21,7 +21,6 @@
                 if (!empty($_SESSION) && $_SESSION['role'] == 'visitor') { ?>
                     <div class="animal__group">
                         <img src="App/<?= htmlspecialchars($animal['image']) ?>" alt="Image d'animal">
-                        <p><?= $animal['name'] ?></p>
                         <p><?= htmlspecialchars($animal['name']) ?></p>
                         <p><?= htmlspecialchars($animal['description']) ?></p>
                     </div>
@@ -55,11 +54,13 @@
         }
         ?>
     </div>
-    <div>
-        <form action="/enclos/delete?id=<?= $_GET['id'] ?>" method="POST" onsubmit="return confirm('Êtes-vous sûr de vouloir supprimer cet enclos ?');">
-            <button style="background-color: red;" type="submit">Supprimer l'enclos</button>
-        </form>
-    </div>
+    <?php if (!empty($_SESSION) && $_SESSION['role'] == 'employee') { ?>
+        <div>
+            <form action="/enclos/delete?id=<?= $_GET['id'] ?>" method="POST" onsubmit="return confirm('Êtes-vous sûr de vouloir supprimer cet enclos ?');">
+                <button style="background-color: red;" type="submit">Supprimer l'enclos</button>
+            </form>
+        </div>
+    <?php } ?>
 </div>
 
 <script>

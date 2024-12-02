@@ -1,7 +1,7 @@
 <?php
-// Destruction de la session en cours
+// Destroy the session
 session_destroy();
 
-// Redirigé vers la page d'accueil 
+// Redirect to the home page
 redirectTo('/');
 ?>

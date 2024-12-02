@@ -1,25 +1,25 @@
 <?php
 
-// Initialisation des variables
-$errors = []; // Tableau pour stocker les éventuelles erreurs
-$email = null; // Email de l'utilisateur (initialisé à null)
-$password = null; // Mot de passe de l'utilisateur (initialisé à null)
+// Initialize variables
+$errors = []; // Array to store potential errors
+$email = null; // User's email (initialized as null)
+$password = null; // User's password (initialized as null)
 
 try {
-    // Vérifie si l'utilisateur est connecté en vérifiant la session
+    // Check if the user is logged in by verifying the session
     if (!empty($_SESSION['user'])) {
-        // Récupère l'email et le mot de passe depuis la session
+        // Retrieve email and password from the session
         $email = $_SESSION['email'];
         $password = $_SESSION['password'];
     }
 } catch (Exception $e) {
-    // Ajoute un message d'erreur en cas d'exception lors de l'accès à la session
+    // Add an error message in case of an exception accessing the session
     $errors['infoAccount'] = $e->getMessage();
 }
 
-// Appel à la fonction render pour afficher la vue des informations de l'employé
+// Call the render function to display the employee info view
 render('employees/info', [
-    'email' => $email, // Passe l'email à la vue
-    'password' => $password, // Passe le mot de passe à la vue
-    'errors' => $errors // Passe les éventuelles erreurs à la vue
+    'email' => $email, // Pass email to the view
+    'password' => $password, // Pass password to the view (consider security implications below)
+    'errors' => $errors // Pass any errors to the view
 ]);

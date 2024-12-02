@@ -14,10 +14,6 @@
                     <?php } ?>
                 </ul>
             </li>
-
-            <li>
-                <a href="/infoTickets">Tarifs</a>
-            </li>
             <?php if (!empty($_SESSION) && $_SESSION['role'] == 'visitor') { ?>
                 <li class="deroulant"><a href="/" class="user"><ion-icon name="person-circle-outline"></ion-icon></a>
                     <ul class="sous">
