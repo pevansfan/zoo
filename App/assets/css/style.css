@@ -1,0 +1,131 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    scroll-behavior: smooth;
+    font-family: "Montserrat", sans-serif;
+}
+
+.home__section {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 50px;
+}
+
+.home__presentation,
+.home__animals {
+    width: 50%;
+}
+
+.home__animals {
+    display: flex;
+    justify-content: center;
+}
+
+.home__animals img {
+    max-width: 300px;
+    max-height: 300px;
+}
+
+.animal__group {
+    display: flex;
+    flex-direction: column;
+    margin: 20px;
+}
+
+
+/* Section des animaux */
+.enclos__animals {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr); /* Disposition en grille */
+    gap: 20px;
+    padding: 20px;
+    justify-content: center;
+    justify-items: center;
+}
+
+/* Carte de l'animal */
+.animal__group {
+    background-color: #ffffff;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Ombre douce pour la carte */
+    overflow: hidden;
+    width: 100%;
+    max-width: 300px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+/* Effet de survol de la carte */
+.animal__group:hover {
+    transform: translateY(-10px); /* Décalage de la carte au survol */
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2); /* Ombre plus marquée au survol */
+}
+
+/* Image de l'animal */
+.animal__group img {
+    width: 100%;
+    height: auto;
+    border-bottom: 4px solid #f0f0f0; /* Séparation avec une bordure */
+}
+
+/* Nom de l'animal */
+.animal__group p:first-of-type {
+    font-size: 1.2em;
+    font-weight: bold;
+    color: #333;
+    margin: 10px 0;
+    text-align: center;
+}
+
+/* Description de l'animal */
+.animal__group p:last-of-type {
+    font-size: 1em;
+    color: #777;
+    padding: 0 15px 15px;
+    text-align: center;
+}
+
+/* Responsive : Ajustement des cartes sur les écrans plus petits */
+@media (max-width: 768px) {
+    .home__animals {
+        grid-template-columns: 1fr 1fr;
+    }
+}
+
+@media (max-width: 480px) {
+    .home__animals {
+        grid-template-columns: 1fr; /* Une seule colonne sur les petits écrans */
+    }
+}
+
+.enclos__section {
+    width: 100%;
+    padding-top: 70px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.enclos__presentation {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.section__title {
+    margin: 30px;
+    text-align: center;
+}
+
+.btns button{
+    margin-top: 10px;
+}
+
+.no-animal {
+    text-align: center;
+}

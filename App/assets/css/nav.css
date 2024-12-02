@@ -1,0 +1,222 @@
+header {
+    background-image: url(/App/assets/img/img-zoo.jpeg);
+    background-position: center;
+    background-repeat: no-repeat;
+    width: 100%;
+    height: 100vh;
+}
+
+header span ion-icon {
+    font-size: 50px;
+    background-color: #fff;
+}
+
+header span a {
+    color: #000;
+}
+
+
+nav {
+    width: 100%;
+    background-color: rgb(225, 225, 225);
+    position: fixed;
+    top: 0px;
+    z-index: 1;
+}
+
+.conteneur-nav {
+    width: 100%;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+
+nav label {
+    display: inline-block;
+    width: 100%;
+    padding: 10px 0px;
+    text-align: center;
+    background-color: gold;
+}
+
+nav ul {
+    display: none;
+    list-style-type: none;
+    background-color: #555;
+}
+
+nav input[type=checkbox]:checked+ul {
+    display: flex;
+    flex-flow: column wrap;
+}
+
+nav ul li {
+    margin-left: 40px;
+    white-space: nowrap;
+    text-align: center;
+}
+
+nav .ul {
+    display: flex;
+    align-items: center;
+}
+
+nav>div>ul>li>a {
+    color: rgb(225, 225, 225);
+}
+
+nav a {
+    display: block;
+    text-decoration: none;
+    color: black;
+    padding: 10px 0px;
+}
+
+.sous {
+    display: flex;
+    flex-flow: column wrap;
+    z-index: 1000;
+}
+
+.sous li {
+    margin-left: 0;
+    flex: 1 1 auto;
+    text-align: left;
+}
+
+.sous a {
+    padding: 10px;
+    background-color: RGBa(200, 200, 200, 0.8);
+}
+
+.user {
+    display: flex;
+    align-items: center;
+}
+
+.user ion-icon {
+    font-size: 30px;
+    margin-right: 10px;
+}
+
+@media screen and (min-width: 980px) {
+    .conteneur-nav {
+        position: static;
+    }
+
+    nav label,
+    nav input {
+        display: none;
+    }
+
+    nav ul {
+        display: flex;
+        flex-flow: row wrap;
+        background-color: rgb(225, 225, 225);
+        padding: 15px;
+    }
+
+    nav ul li {
+        position: relative;
+    }
+
+    nav>div>ul>li>a {
+        color: black;
+    }
+
+    nav a {
+        border-bottom: 2px solid transparent;
+    }
+
+    nav a:hover {
+        color: rgba(109, 193, 170);
+        border-bottom: 2px solid rgb(181, 214, 199);
+    }
+
+    .sous {
+        display: none;
+        box-shadow: 0px 1px 2px #CCC;
+        background-color: white;
+        position: absolute;
+        width: 400px;
+    }
+
+    nav>div>ul li:hover .sous {
+        display: flex;
+        flex-flow: column wrap;
+    }
+
+    .sous a {
+        border-bottom: none;
+        background-color: white;
+    }
+
+    .sous a:hover {
+        border-bottom: none;
+        background-color: RGBa(200, 200, 200, 0.1);
+    }
+
+    .deroulant>a::after {
+        content: " ▼";
+        font-size: 12px;
+    }
+}
+
+
+.btn-account ion-icon {
+    color: black;
+    font-size: 40px;
+}
+
+.btn-account .sign-in {
+    padding-right: 100px;
+}
+
+.info-home {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+
+.info-home .btn-search {
+    display: flex;
+    align-items: center;
+    padding-top: 15%;
+    padding-bottom: 8%;
+}
+
+.info-home .btn-search input {
+    border: 3px solid rgba(109, 193, 170);
+    outline: 2px solid #cadf56;
+    height: 40px;
+    width: 700px;
+    border-radius: 50px;
+    padding: 0px 10px;
+}
+
+.info-home .btn-search .btn {
+    position: absolute;
+    margin-left: 650px;
+}
+
+.info-home .title {
+    margin-top: 2%;
+}
+
+.info-home .title h1 {
+    text-transform: uppercase;
+    font-size: 60px;
+    color: #fff;
+    margin-bottom: 30px;
+}
+
+.info-home .title h1 .name-school {
+    color: rgba(109, 193, 170);
+}
+
+.info-home .title p {
+    color: #fff;
+    margin: 0 100px;
+}
