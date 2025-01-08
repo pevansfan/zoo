@@ -1,0 +1,9 @@
+RewriteEngine On
+
+# Autoriser l'accès direct aux fichiers dans App/assets
+RewriteRule ^App/assets/ - [L]
+
+# Rediriger toutes les autres requêtes vers index.php
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule ^(.*)$ index.php [QSA,L]
